@@ -1,275 +1,367 @@
 {
-  "python.defaultInterpreterPath": "/home/ihackerubuntu/anaconda3/bin/python",
-  "[dart]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.rulers": [80],
-    "editor.selectionHighlight": false,
-    "editor.suggestSelection": "first",
-    "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": "off"
-  },
-  "tabnine.experimentalAutoImports": true,
-  "codeium.enableConfig": {
-    "*": true,
-    "xml": true,
-    "plaintext": true,
-    "bibtex": true,
-    "markdown": true
-  },
-  "latex-workshop.latex.tools": [
-    {
-      "name": "latexmk",
-      "command": "latex",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-pdf",
-        "-outdir=%OUTDIR%",
-        "%DOC%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "lualatexmk",
-      "command": "latexmk",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-lualatex",
-        "-outdir=%OUTDIR%",
-        "%DOC%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "xelatexmk",
-      "command": "latexmk",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-xelatex",
-        "-outdir=%OUTDIR%",
-        "%DOC%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "latexmkINDRA1",
-      "command": "latexmk",
-      "args": [
-        "-synctex=1",
-        "--shell-escape",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "-xelatex",
-        "-outdir=%OUTDIR%",
-        "%DOC%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "xelatexmkINDRA2",
-      "command": "xelatex",
-      "args": ["--shell-escape", "%DOC%"],
-      "env": {}
-    },
-    {
-      "name": "latexmk_rconly",
-      "command": "latexmk",
-      "args": ["%DOC%"],
-      "env": {}
-    },
-    {
-      "name": "pdflatex",
-      "command": "pdflatex",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "%DOC%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "bibtex",
-      "command": "bibtex",
-      "args": ["%DOCFILE%"],
-      "env": {}
-    },
-    {
-      "name": "rnw2tex",
-      "command": "Rscript",
-      "args": [
-        "-e",
-        "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
-      ],
-      "env": {}
-    },
-    {
-      "name": "jnw2tex",
-      "command": "julia",
-      "args": ["-e", "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"],
-      "env": {}
-    },
-    {
-      "name": "jnw2texminted",
-      "command": "julia",
-      "args": [
-        "-e",
-        "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
-      ],
-      "env": {}
-    },
-    {
-      "name": "pnw2tex",
-      "command": "pweave",
-      "args": ["-f", "tex", "%DOC_EXT%"],
-      "env": {}
-    },
-    {
-      "name": "pnw2texminted",
-      "command": "pweave",
-      "args": ["-f", "texminted", "%DOC_EXT%"],
-      "env": {}
-    },
-    {
-      "name": "tectonic",
-      "command": "tectonic",
-      "args": ["--synctex", "--keep-logs", "%DOC%.tex"],
-      "env": {}
-    }
-  ],
-  "latex-workshop.synctex.afterBuild.enabled": true,
-  "latex-workshop.synctex.path": "synctex",
-  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-  "latex-workshop.intellisense.unimathsymbols.enabled": true,
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmk",
-      "tools": ["latexmk"]
-    },
-    {
-      "name": "latexmk (latexmkrc)",
-      "tools": ["latexmk_rconly"]
-    },
-    {
-      "name": "latexmk (lualatex)",
-      "tools": ["lualatexmk"]
-    },
-    {
-      "name": "latexmk (xelatex)",
-      "tools": ["xelatexmk"]
-    },
-    {
-      "name": "latex INDRA 1",
-      "tools": ["latexmkINDRA1"]
-    },
-    {
-      "name": "xelatex INDRA 2",
-      "tools": ["xelatexmkINDRA2"]
-    },
-    {
-      "name": "Full INDRA 2 with bibtex",
-      "tools": [
-        "xelatexmkINDRA2",
-        "bibtex",
-        "xelatexmkINDRA2",
-        "xelatexmkINDRA2"
-      ]
-    },
-    {
-      "name": "pdflatex -> bibtex -> pdflatex * 2",
-      "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
-    },
-    {
-      "name": "Compile Rnw files",
-      "tools": ["rnw2tex", "latexmk"]
-    },
-    {
-      "name": "Compile Jnw files",
-      "tools": ["jnw2tex", "latexmk"]
-    },
-    {
-      "name": "Compile Pnw files",
-      "tools": ["pnw2tex", "latexmk"]
-    },
-    {
-      "name": "tectonic",
-      "tools": ["tectonic"]
-    }
-  ],
-  "latex-utilities.message.update.show": false,
-  "latex-utilities.liveReformat.enabled": true,
-  "application.shellEnvironmentResolutionTimeout": 20,
-  "gitlens.gitCommands.skipConfirmations": [
-    "fetch:command",
-    "stash-push:command",
-    "switch:command"
-  ],
-  "gitlens.graph.layout": "editor",
-  "gitlens.plusFeatures.enabled": false,
-  "latex-workshop.bibtex-format.sort.enabled": true,
-  "editor.formatOnSave": true,
-  "gitlens.graph.scrollMarkers.additionalTypes": [
-    "localBranches",
-    "stashes",
-    "tags",
-    "remoteBranches",
-    "pullRequests"
-  ],
-  "git.autofetch": true,
-  "git.enableSmartCommit": true,
-  "git.confirmSync": false,
-  "explorer.confirmDragAndDrop": false,
-  "dependi.apiKey": "",
-  "editor.inlayHints.enabled": "onUnlessPressed",
-  "telemetry.telemetryLevel": "off",
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "latex-workshop.formatting.latex": "latexindent",
-  "latex-workshop.latex.autoClean.run": "onBuilt",
-  "latex-workshop.latex.autoBuild.run": "onSave",
-  "latex-workshop.latex.recipe.default": "latex INDRA 1",
-  "[latex]": {
-    "editor.wordWrap": "on"
-  },
-  "hediet.vscode-drawio.resizeImages": null,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "cmake.pinnedCommands": [
-    "workbench.action.tasks.configureTaskRunner",
-    "workbench.action.tasks.runTask"
-  ],
-  "windsurf.autocompleteSpeed": "fast",
-  "workbench.iconTheme": "material-icon-theme",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "dart.devToolsBrowser": "default",
-  "workbench.externalBrowser": "firefox",
-  "liveServer.settings.root": "/dist",
-  "liveServer.settings.CustomBrowser": "firefox",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace,'FiraCode Nerd Font'",
-  "workbench.editorAssociations": {
-    "*.stl": "3dviewer.viewer",
-    "*.md": "vscode.markdown.preview.editor"
-  },
-  "files.associations": {
-    "*.md": "markdown",
-    "*.sdf": "xml"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "3dviewer.boundingBox": true
+	"python.defaultInterpreterPath": "/home/ihackerubuntu/anaconda3/bin/python",
+	"[dart]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"editor.rulers": [80],
+		"editor.selectionHighlight": false,
+		"editor.suggestSelection": "first",
+		"editor.tabCompletion": "onlySnippets",
+		"editor.wordBasedSuggestions": "off"
+	},
+	"tabnine.experimentalAutoImports": true,
+	"latex-workshop.latex.tools": [
+		{
+			"name": "latexmk",
+			"command": "latex",
+			"args": [
+				"-synctex=1",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+				"-pdf",
+				"-outdir=%OUTDIR%",
+				"%DOC%"
+			],
+			"env": {}
+		},
+		{
+			"name": "lualatexmk",
+			"command": "latexmk",
+			"args": [
+				"-synctex=1",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+				"-lualatex",
+				"-outdir=%OUTDIR%",
+				"%DOC%"
+			],
+			"env": {}
+		},
+		{
+			"name": "xelatexmk",
+			"command": "latexmk",
+			"args": [
+				"-synctex=1",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+				"-xelatex",
+				"-outdir=%OUTDIR%",
+				"%DOC%"
+			],
+			"env": {}
+		},
+		{
+			"name": "latexmkINDRA1",
+			"command": "latexmk",
+			"args": [
+				"-synctex=1",
+				"--shell-escape",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+				"-xelatex",
+				"-outdir=%OUTDIR%",
+				"%DOC%"
+			],
+			"env": {}
+		},
+		{
+			"name": "xelatexmkINDRA2",
+			"command": "xelatex",
+			"args": ["--shell-escape", "%DOC%"],
+			"env": {}
+		},
+		{
+			"name": "latexmk_rconly",
+			"command": "latexmk",
+			"args": ["%DOC%"],
+			"env": {}
+		},
+		{
+			"name": "pdflatex",
+			"command": "pdflatex",
+			"args": [
+				"-synctex=1",
+				"-interaction=nonstopmode",
+				"-file-line-error",
+				"%DOC%"
+			],
+			"env": {}
+		},
+		{
+			"name": "bibtex",
+			"command": "bibtex",
+			"args": ["%DOCFILE%"],
+			"env": {}
+		},
+		{
+			"name": "rnw2tex",
+			"command": "Rscript",
+			"args": [
+				"-e",
+				"knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+			],
+			"env": {}
+		},
+		{
+			"name": "jnw2tex",
+			"command": "julia",
+			"args": ["-e", "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"],
+			"env": {}
+		},
+		{
+			"name": "jnw2texminted",
+			"command": "julia",
+			"args": [
+				"-e",
+				"using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+			],
+			"env": {}
+		},
+		{
+			"name": "pnw2tex",
+			"command": "pweave",
+			"args": ["-f", "tex", "%DOC_EXT%"],
+			"env": {}
+		},
+		{
+			"name": "pnw2texminted",
+			"command": "pweave",
+			"args": ["-f", "texminted", "%DOC_EXT%"],
+			"env": {}
+		},
+		{
+			"name": "tectonic",
+			"command": "tectonic",
+			"args": ["--synctex", "--keep-logs", "%DOC%.tex"],
+			"env": {}
+		}
+	],
+	"latex-workshop.synctex.afterBuild.enabled": true,
+	"latex-workshop.synctex.path": "synctex",
+	"latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+	"latex-workshop.intellisense.unimathsymbols.enabled": true,
+	"latex-workshop.latex.recipes": [
+		{
+			"name": "latexmk",
+			"tools": ["latexmk"]
+		},
+		{
+			"name": "latexmk (latexmkrc)",
+			"tools": ["latexmk_rconly"]
+		},
+		{
+			"name": "latexmk (lualatex)",
+			"tools": ["lualatexmk"]
+		},
+		{
+			"name": "latexmk (xelatex)",
+			"tools": ["xelatexmk"]
+		},
+		{
+			"name": "latex INDRA 1",
+			"tools": ["latexmkINDRA1"]
+		},
+		{
+			"name": "xelatex INDRA 2",
+			"tools": ["xelatexmkINDRA2"]
+		},
+		{
+			"name": "Full INDRA 2 with bibtex",
+			"tools": [
+				"xelatexmkINDRA2",
+				"bibtex",
+				"xelatexmkINDRA2",
+				"xelatexmkINDRA2"
+			]
+		},
+		{
+			"name": "pdflatex -> bibtex -> pdflatex * 2",
+			"tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+		},
+		{
+			"name": "Compile Rnw files",
+			"tools": ["rnw2tex", "latexmk"]
+		},
+		{
+			"name": "Compile Jnw files",
+			"tools": ["jnw2tex", "latexmk"]
+		},
+		{
+			"name": "Compile Pnw files",
+			"tools": ["pnw2tex", "latexmk"]
+		},
+		{
+			"name": "tectonic",
+			"tools": ["tectonic"]
+		}
+	],
+	"latex-utilities.message.update.show": false,
+	"latex-utilities.liveReformat.enabled": true,
+	"application.shellEnvironmentResolutionTimeout": 20,
+	"gitlens.gitCommands.skipConfirmations": [
+		"fetch:command",
+		"stash-push:command",
+		"switch:command"
+	],
+	"gitlens.graph.layout": "editor",
+	"gitlens.plusFeatures.enabled": false,
+	"latex-workshop.bibtex-format.sort.enabled": true,
+	"editor.formatOnSave": true,
+	"gitlens.graph.scrollMarkers.additionalTypes": [
+		"localBranches",
+		"stashes",
+		"tags",
+		"remoteBranches",
+		"pullRequests"
+	],
+	"git.autofetch": true,
+	"git.enableSmartCommit": true,
+	"git.confirmSync": false,
+	"explorer.confirmDragAndDrop": false,
+	"dependi.apiKey": "",
+	"telemetry.telemetryLevel": "off",
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"latex-workshop.formatting.latex": "latexindent",
+	"latex-workshop.latex.autoClean.run": "onBuilt",
+	"latex-workshop.latex.autoBuild.run": "onSave",
+	"latex-workshop.latex.recipe.default": "latex INDRA 1",
+	"[latex]": {
+		"editor.wordWrap": "on"
+	},
+	"[plaintext]": {
+		"editor.wordWrap": "on"
+	},
+	"hediet.vscode-drawio.resizeImages": null,
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"cmake.pinnedCommands": [
+		"workbench.action.tasks.configureTaskRunner",
+		"workbench.action.tasks.runTask"
+	],
+	"windsurf.autocompleteSpeed": "default",
+	"workbench.iconTheme": "material-icon-theme",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"dart.devToolsBrowser": "default",
+	"workbench.externalBrowser": "firefox",
+	"liveServer.settings.root": "/dist",
+	"liveServer.settings.CustomBrowser": "firefox",
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace,'FiraCode Nerd Font'",
+	"workbench.editorAssociations": {
+		"*.stl": "3dviewer.viewer",
+		"*.md": "vscode.markdown.preview.editor",
+		"*.csv": "gc-excelviewer-csv-editor"
+	},
+	"files.associations": {
+		"*.md": "markdown",
+		"*.sdf": "xml"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"3dviewer.boundingBox": true,
+	"windsurf.autoExecutionPolicy": "off",
+	"windsurf.explainAndFixInCurrentConversation": false,
+	"playwright.reuseBrowser": true,
+	"playwright.showTrace": false,
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"playwright.runGlobalSetupOnEachRun": false,
+	"terminal.integrated.inheritEnv": false,
+	"windsurf.chatFontSize": "default",
+	"windsurf.rememberLastModelSelection": false,
+	"windsurf.openRecentConversation": false,
+	"windsurf.enableTabToJump": false,
+	"editor.inlayHints.enabled": "onUnlessPressed",
+	"rust-analyzer.server.path": null,
+	"rust-analyzer.workspace.discoverConfig": null,
+	"todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS):|todo!:|todo:|TODO!:",
+	"todo-tree.highlights.customHighlight": {
+		"todo:": {
+			"icon": "alert",
+			"iconColour": "red",
+			"background": "#e74c3c",
+			"opacity": 60,
+			"foreground": "white"
+		},
+		"TODO": {
+			"icon": "alert",
+			"iconColour": "red",
+			"background": "#e74c3c",
+			"opacity": 60,
+			"foreground": "white"
+		},
+		"todo!:": {
+			"icon": "alert",
+			"iconColour": "red",
+			"background": "#e74c3c",
+			"foreground": "white",
+			"opacity": 60
+		},
+        "TODO!": {
+			"icon": "alert",
+			"iconColour": "red",
+			"background": "#e74c3c",
+			"foreground": "white",
+			"opacity": 60
+		},
+		"BUG": {
+			"icon": "bug",
+			"background": "#e74c3c",
+			"foreground": "white",
+			"opacity": 60
+		},
+		"HACK": {
+			"icon": "tools"
+		},
+		"FIXME": {
+			"icon": "flame"
+		},
+		"XXX": {
+			"icon": "$(close)"
+		}
+	},
+	"git.openRepositoryInParentFolders": "always",
+	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+	"editor.guides.bracketPairs": true,
+	"database-client.autoSync": true,
+	"[dockercompose]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"[github-actions-workflow]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"explorer.confirmPasteNative": false,
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"*.ts": "${capture}.js, ${capture}.typegen.ts",
+		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+		"*.jsx": "${capture}.js",
+		"*.tsx": "${capture}.ts, ${capture}.typegen.ts",
+		"tsconfig.json": "tsconfig.*.json",
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+		"*.mts": "${capture}.typegen.ts",
+		"*.cts": "${capture}.typegen.ts"
+	},
+	"terminal.integrated.fontLigatures.enabled": true,
+	"i18n-ally.displayLanguage": "en",
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"diffEditor.ignoreTrimWhitespace": false
 }
