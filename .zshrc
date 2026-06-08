@@ -128,6 +128,9 @@ source $ZSH/oh-my-zsh.sh
 enable-fzf-tab
 
 # INDRA Added start
+
+alias bat='batcat'
+
 bindkey -e
 bindkey '^f' autosuggest-accept
 bindkey '^p' history-search-backward
@@ -152,7 +155,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --icons=always --color=always $realpath'
 
 zstyle ':fzf-tab:complete:ls:*' fzf-preview '
     if [[ -f $realpath ]]; then
@@ -161,14 +164,29 @@ zstyle ':fzf-tab:complete:ls:*' fzf-preview '
                 bat --color=always $realpath 2>/dev/null || cat $realpath
                 ;;
             *)
-                ls -1 --color=always $realpath
+                eza -1 --icons=always --color=always $realpath
                 ;;
         esac
     else
-        ls -1 --color=always $realpath
+        eza -1 --icons=always --color=always $realpath
     fi'
 
-# eval "$(fzf --zsh)"
+export FZF_DEFAULT_OPTS="
+  --height 90%
+  --layout reverse
+  --border rounded
+  --info inline"
+
+# fzf Ctrl+R history with preview
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}'
+  --preview-window 'down:3:wrap'"
+
+# Alt+C directory jump with tree preview  
+export FZF_CTRL_T_OPTS="
+  --preview 'batcat --color=always --style=numbers --line-range=:500 {} 2>/dev/null || eza --icons=always --color=always {}'
+  --preview-window 'right:60%:wrap:border-left'
+  --bind 'ctrl-/:change-preview-window(down:70%|hidden|right:60%)'"
 
 # INDRA Added End
 
@@ -190,6 +208,24 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# eza
+alias ls='eza --icons=auto'
+alias ll='eza -lah --icons=auto'
+alias la='eza -a --icons=auto'
+alias tree='eza --tree --icons=auto'
+
+# zoxide
+eval "$(zoxide init zsh --cmd cd)"
+
+# Yaki file manager
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -234,7 +270,7 @@ source $HOME/.local/bin/env # For UV Python package manager
 # bun completions
 [ -s "/home/ihackerubuntu/.bun/_bun" ] && source "/home/ihackerubuntu/.bun/_bun"
 
-export GITHUB_PERSONAL_ACCESS_TOKEN=  # Add GitHub Token
+export GITHUB_PERSONAL_ACCESS_TOKEN=
 
 # NODE, NPX, load add top of this
 
