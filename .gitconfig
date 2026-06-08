@@ -1,0 +1,35 @@
+[user]
+	email = wmindramalw@gmail.com
+	name = Indramal
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[credential]
+	helper = store
+	
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true        # n/N to jump between hunks
+    side-by-side = true    # show old/new side by side
+    line-numbers = true
+    syntax-theme = Dracula
+    dark = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[diff]
+    colorMoved = default
