@@ -279,7 +279,7 @@ export GITHUB_PERSONAL_ACCESS_TOKEN=
 export PATH=/home/ihackerubuntu/.opencode/bin:$PATH
 
 # Add these lines to the file:
-# export OPENROUTER_API_KEY=""
+# export OPENROUTER_API_KEY="ADD KEY here"
 # export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
 # export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
 # export ANTHROPIC_API_KEY="" # Important: Must be explicitly empty
@@ -306,3 +306,19 @@ export CLAUDE_CODE_AUTO_COMPACT_WINDOW="190000"
 
 # Added by Antigravity CLI installer
 export PATH="/home/ihackerubuntu/.local/bin:$PATH"
+
+export NODE_OPTIONS=--dns-result-order=ipv4first
+
+export ZED_DEVICE_ID=0x1c8d
+
+# kilo
+export PATH=/home/ihackerubuntu/.kilo/bin:$PATH
+
+# use ctest for cargo test then set only 5GB memory
+alias ctest='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo test'
+# use crun for cargo run then set only 5GB memory
+alias crun='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo run' 
+# use cbuild for cargo build then set only 5GB memory
+alias cbuild='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo build'
+# use ccheck for cargo check then set only 5GB memory
+alias cbuild='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo check'
