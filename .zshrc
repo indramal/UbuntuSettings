@@ -321,4 +321,4 @@ alias crun='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo ru
 # use cbuild for cargo build then set only 5GB memory
 alias cbuild='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo build'
 # use ccheck for cargo check then set only 5GB memory
-alias cbuild='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo check'
+alias ccheck='systemd-run --user --scope -p MemoryMax=6G -p MemoryHigh=5G cargo check'
